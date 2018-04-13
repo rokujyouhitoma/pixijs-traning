@@ -12,6 +12,14 @@
     type = "canvas"
     }
     PIXI.utils.sayHello(type)
+    let app = new PIXI.Application({
+    width: 256,
+    height: 256,
+    antialias: true,
+    transparent: true,
+    resolution: 1
+    })
+    document.body.appendChild(app.view)
   </script>
 </body>
 </html>
