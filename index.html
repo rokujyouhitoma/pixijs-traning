@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>Hello World</title>
+  <style>* {padding: 0; margin: 0}</style>
 </head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.7.1/pixi.min.js"></script>
 <body>
@@ -16,9 +17,14 @@
     width: 256,
     height: 256,
     antialias: true,
-    transparent: true,
+    transparent: false,
     resolution: 1
     })
+    app.renderer.backgroundColor = 0x061639
+    app.renderer.view.style.position = "absolute";
+    app.renderer.view.style.display = "block";
+    app.renderer.autoResize = true;
+    app.renderer.resize(window.innerWidth, window.innerHeight);
     document.body.appendChild(app.view)
   </script>
 </body>
