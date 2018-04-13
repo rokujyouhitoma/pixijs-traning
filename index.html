@@ -39,6 +39,9 @@
     sprite.x = app.screen.width / 2
     sprite.y = app.screen.height / 2
     app.stage.addChild(sprite)
+    app.ticker.add(function(delta){
+        sprite.rotation += 1/50 * delta
+    })
   </script>
 </body>
 </html>
