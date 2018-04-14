@@ -4,20 +4,35 @@
 
 pixi.jsのキャッチアップ。
 
+## 指針
+
+ - とにかくpixi.jsに触れる
+ - ES6使う
+
 ## アプローチ
 
  - まずはAPIになれる。一通りAPIを触る
- - 内部コードの流し見
- - 内部コードのインタフェース読み
- - 内部コードの全読み
- 
-## Other steps
+ - 内部コードの把握。段階ごとのアプローチを取る
 
- - [x] hello! @yosuke_furukawa sprite!!
- - [x] scaleToWindowの導入。ウィンドウ領域に合わせる
+### TODO
+
+ - [ ] APIになれる
  - [ ] 内部コードの流し見
  - [ ] 内部コードのインタフェース読み
  - [ ] 内部コードの全読み
+
+## History
+
+### 2018.4.14
+
+ - Learning Pixiを進める
+ - README.mdの整備。目的、アプローチ、TODOを定義する
+
+### 2018.4.13
+
+ - Learning Pixiを開始
+ - hello! @yosuke_furukawa sprite!!
+ - scaleToWindowの導入。ウィンドウ領域に合わせる
 
 ## Learning Pixi
 
