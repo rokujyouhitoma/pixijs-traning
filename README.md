@@ -60,7 +60,7 @@ https://github.com/kittykatattack/learningPixi
  - [x] Positioning sprites
  - [x] Size and scale
  - [x] Rotation
- - [ ] Make a sprite from a tileset sub-image
+ - [x] Make a sprite from a tileset sub-image
  - [ ] Using a texture atlas
  - [ ] Loading the texture atlas
  - [ ] Creating sprites from a loaded texture atlas
