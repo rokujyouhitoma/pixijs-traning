@@ -57,8 +57,8 @@ https://github.com/kittykatattack/learningPixi
  - [x] Assigning a name to a loaded file
  - [x] Monitoring load progress
  - [x] More about Pixi's loader
- - [ ] Positioning sprites
- - [ ] Size and scale
+ - [x] Positioning sprites
+ - [x] Size and scale
  - [x] Rotation
  - [ ] Make a sprite from a tileset sub-image
  - [ ] Using a texture atlas
