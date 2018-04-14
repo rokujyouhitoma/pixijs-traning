@@ -14,6 +14,12 @@ pixi.jsのキャッチアップ。
  - まずはAPIになれる。一通りAPIを触る
  - 内部コードの把握。段階ごとのアプローチを取る
 
+## 環境
+
+ - emacs 25.3.1
+   - js2-mode
+   - auto-complete
+
 ### TODO
 
  - [ ] APIになれる
