@@ -5,9 +5,9 @@
   <title>Hello @yosuke_furukawa</title>
   <style>* {padding: 0; margin: 0}</style>
 </head>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.7.1/pixi.min.js"></script>
-<script src="third_party/scaleToWindow/scaleToWindow.js"></script>
 <body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.7.1/pixi.min.js"></script>
+  <script src="third_party/scaleToWindow/scaleToWindow.js"></script>
   <script type="text/javascript">
     let type = "WebGL"
     if(!PIXI.utils.isWebGLSupported()){
@@ -35,8 +35,9 @@
     })
     // hey! @yosuke_furukawa!!
     PIXI.loader
-      .add("@yosuke_furukawa", "assets/yosuke_furukawa_icon_400x400.jpg")
-      .add("@yosuke_furukawa_face", "assets/yosuke_furukawa_face.png")
+      .add([
+        {name: "@yosuke_furukawa", url: "assets/yosuke_furukawa_icon_400x400.jpg"},
+        {name: "@yosuke_furukawa2", url: "assets/yosuke_furukawa_face.png"}])
       .on("progress", loadProgressHandler)
       .load(setup)
     function loadProgressHandler(loader, resource) {
@@ -45,9 +46,7 @@
         console.log("loading: " + resource.name)
     }
     function setup() {
-        let sprite = new PIXI.Sprite(
-            PIXI.loader.resources["@yosuke_furukawa"].texture
-        )
+        let sprite = new PIXI.Sprite(PIXI.loader.resources["@yosuke_furukawa"].texture)
         sprite.anchor.set(0.5)
         sprite.x = app.screen.width / 2
         sprite.y = app.screen.height / 2
