@@ -35,14 +35,18 @@
     })
     // hey! @yosuke_furukawa!!
     PIXI.loader
-    .add([
-        "assets/yosuke_furukawa_icon_400x400.jpg",
-    ])
-    .load(setup)
+      .add("@yosuke_furukawa", "assets/yosuke_furukawa_icon_400x400.jpg")
+      .add("@yosuke_furukawa_face", "assets/yosuke_furukawa_face.png")
+      .on("progress", loadProgressHandler)
+      .load(setup)
+    function loadProgressHandler(loader, resource) {
+        console.log("progress: " + loader.progress + "%")
+        console.log("url: " + resource.url)
+        console.log("loading: " + resource.name)
+    }
     function setup() {
-        //let sprite = PIXI.Sprite.fromImage("assets/yosuke_furukawa_icon_400x400.jpg")
         let sprite = new PIXI.Sprite(
-            PIXI.loader.resources["assets/yosuke_furukawa_icon_400x400.jpg"].texture
+            PIXI.loader.resources["@yosuke_furukawa"].texture
         )
         sprite.anchor.set(0.5)
         sprite.x = app.screen.width / 2
