@@ -28,6 +28,7 @@ PIXI.loader
     .add([
         {name: "@yosuke_furukawa", url: "assets/yosuke_furukawa_icon_400x400.jpg", onComplete: onCompleteHandler},
         {name: "@yosuke_furukawa2", url: "assets/yosuke_furukawa_face.png"}])
+    .add("tileset", "third_party/assets/tileset.png")
     .on("progress", loadProgressHandler)
     .load(setup);
 function onCompleteHandler() {
@@ -48,4 +49,12 @@ function setup() {
     app.ticker.add(function(delta){
         sprite.rotation += 1/50 * delta;
     });
+    let texture = PIXI.utils.TextureCache["tileset"];
+    let rectangle = new PIXI.Rectangle(192, 128, 64, 64);
+    texture.frame = rectangle;
+    let rocket = new PIXI.Sprite(texture);
+    rocket.x = 32;
+    rocket.y = 32;
+    rocket.scale.set(2, 2);
+    app.stage.addChild(rocket);
 }
