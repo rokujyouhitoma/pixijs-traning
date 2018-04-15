@@ -29,6 +29,11 @@ pixi.jsのキャッチアップ。
 
 ## History
 
+### 2018.4.15
+
+ - pixi-spine.jsを導入
+ - Spine(spineBoy)を試しに動かす
+
 ### 2018.4.14
 
  - Learning Pixiを進める

@@ -17,6 +17,7 @@ app.renderer.view.style.display = "block";
 app.renderer.autoResize = false;
 //app.renderer.resize(window.innerWidth, window.innerHeight)
 app.renderer.resize(1024, 1024);
+app.stage.interactive = true;
 document.body.appendChild(app.view);
 // scale to window size.
 scaleToWindow(app.renderer.view);
@@ -29,6 +30,7 @@ PIXI.loader
         {name: "@yosuke_furukawa", url: "assets/yosuke_furukawa_icon_400x400.jpg", onComplete: onCompleteHandler},
         {name: "@yosuke_furukawa2", url: "assets/yosuke_furukawa_face.png"}])
     .add("tileset", "third_party/assets/tileset.png")
+    .add("spineboy", "third_party/assets/spine/spineboy.json")
     .on("progress", loadProgressHandler)
     .load(setup);
 function onCompleteHandler() {
@@ -38,7 +40,7 @@ function loadProgressHandler(loader, resource) {
     console.log("url: " + resource.url);
     console.log("loading: " + resource.name);
 }
-function setup() {
+function setup(loader, res) {
     let sprite = new PIXI.Sprite(PIXI.loader.resources["@yosuke_furukawa"].texture);
     sprite.anchor.set(0.5);
     sprite.position.set(app.screen.width / 2, app.screen.height / 2);
@@ -57,4 +59,19 @@ function setup() {
     rocket.y = 32;
     rocket.scale.set(2, 2);
     app.stage.addChild(rocket);
+    // spineBoy
+    console.log(res.spineboy);
+    let spineBoy = new PIXI.spine.Spine(res.spineboy.spineData);
+    console.log(spineBoy.width);
+    spineBoy.x = spineBoy.width;
+    spineBoy.y = app.screen.height;
+    spineBoy.scale.set(1.5);
+    spineBoy.stateData.setMix('walk', 'jump', 0.2);
+    spineBoy.stateData.setMix('jump', 'walk', 0.4);
+    spineBoy.state.setAnimation(0, 'walk', true);
+    app.stage.addChild(spineBoy);
+    app.stage.on('pointerdown', function() {
+        spineBoy.state.setAnimation(0, 'jump', false);
+        spineBoy.state.addAnimation(0, 'walk', true, 0);
+    });
 }
