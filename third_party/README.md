@@ -9,12 +9,12 @@
 
 # Third party assets
 
- - tileset.png(https://github.com/kittykatattack/learningPixi)
+ - assets/tileset.png(https://github.com/kittykatattack/learningPixi)
    - revision: https://github.com/kittykatattack/learningPixi/commit/d85b971fb4ea52e41ab8072904392c52af398a61
 
 ## For spine
 
- - spine/spineboy.json(http://pixijs.io/examples/required/assets/spine/spineboy.json)
- - spine/spineboy.atlas(http://pixijs.io/examples/required/assets/spine/spineboy.atlas)
- - spine/spineboy.png(http://pixijs.io/examples/required/assets/spine/spineboy.png)
+ - assets/spine/spineboy.json(http://pixijs.io/examples/required/assets/spine/spineboy.json)
+ - assets/spine/spineboy.atlas(http://pixijs.io/examples/required/assets/spine/spineboy.atlas)
+ - assets/spine/spineboy.png(http://pixijs.io/examples/required/assets/spine/spineboy.png)
  

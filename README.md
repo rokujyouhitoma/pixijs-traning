@@ -16,9 +16,17 @@ pixi.jsのキャッチアップ。
 
 ## 環境
 
+### ローカル環境
+
  - emacs 25.3.1
    - js2-mode
    - auto-complete
+
+### ライブラリ
+
+ - pixi.js 4.7.1
+ - その他ライブラリ
+   - [third_party/README.md](/third_party/README.md) に記載
 
 ### TODO
 
@@ -26,6 +34,7 @@ pixi.jsのキャッチアップ。
  - [ ] 内部コードの流し見
  - [ ] 内部コードのインタフェース読み
  - [ ] 内部コードの全読み
+ - [ ] pixi-spine.jsを追う。Spineを触る
 
 ## History
 
