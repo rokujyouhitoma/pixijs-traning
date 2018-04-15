@@ -1,3 +1,4 @@
+// hey! @yosuke_furukawa!!
 "use strict";
 let type = "WebGL";
 if(!PIXI.utils.isWebGLSupported()){
@@ -24,21 +25,18 @@ scaleToWindow(app.renderer.view);
 window.addEventListener("resize", function(event){
     scaleToWindow(app.renderer.view);
 });
-// hey! @yosuke_furukawa!!
 PIXI.loader
     .add([
         {name: "@yosuke_furukawa", url: "assets/yosuke_furukawa_icon_400x400.jpg", onComplete: onCompleteHandler},
-        {name: "@yosuke_furukawa2", url: "assets/yosuke_furukawa_face.png"}])
-    .add("tileset", "third_party/assets/tileset.png")
-    .add("spineboy", "third_party/assets/spine/spineboy.json")
+        {name: "@yosuke_furukawa2", url: "assets/yosuke_furukawa_face.png"},
+        {name: "tileset", url: "third_party/assets/tileset.png"},
+        {name: "spineboy", url: "third_party/assets/spine/spineboy.json"}])
     .on("progress", loadProgressHandler)
     .load(setup);
 function onCompleteHandler() {
 }
 function loadProgressHandler(loader, resource) {
-    console.log("progress: " + loader.progress + "%");
-    console.log("url: " + resource.url);
-    console.log("loading: " + resource.name);
+    console.log(`progress: ${loader.progress}%, url: ${resource.url}, loading: ${resource.name}`);
 }
 function setup(loader, res) {
     let sprite = new PIXI.Sprite(PIXI.loader.resources["@yosuke_furukawa"].texture);
@@ -60,9 +58,7 @@ function setup(loader, res) {
     rocket.scale.set(2, 2);
     app.stage.addChild(rocket);
     // spineBoy
-    console.log(res.spineboy);
     let spineBoy = new PIXI.spine.Spine(res.spineboy.spineData);
-    console.log(spineBoy.width);
     spineBoy.x = spineBoy.width;
     spineBoy.y = app.screen.height;
     spineBoy.scale.set(1.5);
