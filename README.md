@@ -41,6 +41,8 @@ pixi.jsのキャッチアップ。
 ### 2018.4.16
 
  - Learning Pixiを進める
+ - SpriteのTextureを動的に切り替える
+ - Maskを使う。PIXI.Graphicsで抜く
 
 ### 2018.4.15
 
