@@ -28,7 +28,7 @@ window.addEventListener("resize", function(event){
 PIXI.loader
     .add([
         {name: "@yosuke_furukawa", url: "assets/yosuke_furukawa_icon_400x400.jpg", onComplete: onCompleteHandler},
-        {name: "@yosuke_furukawa2", url: "assets/yosuke_furukawa_face.png"},
+        {name: "@rokujyouhitoma", url: "assets/rokujyouhitoma_icon_400x400.jpg", onComplete: onCompleteHandler},
         {name: "tileset", url: "third_party/assets/tileset.png"},
         {name: "spineboy", url: "third_party/assets/spine/spineboy.json"}])
     .on("progress", loadProgressHandler)
@@ -50,7 +50,7 @@ function setup(loader, res) {
     // rotate and change @yosuke_furukawa texture
     app.ticker.add(function(delta){
         sprite.rotation += 1/50 * delta;
-        let candidateSpriteName = (Math.floor(sprite.rotation / (Math.PI / 2)) % 2 == 1) ? "@yosuke_furukawa" : "@yosuke_furukawa2";
+        let candidateSpriteName = (Math.floor(sprite.rotation / (Math.PI / 2)) % 2 == 0) ? "@yosuke_furukawa" : "@rokujyouhitoma";
         if (spriteName != candidateSpriteName) {
             spriteName = candidateSpriteName;
             sprite.setTexture(PIXI.loader.resources[spriteName].texture);
