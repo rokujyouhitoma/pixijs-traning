@@ -82,7 +82,8 @@ function setup(loader, res) {
             rocket.x = 0;
         }
         // moving spineBoy
-        spineBoy.x += 2 * delta;
+        let speed = (spineBoy.state.getCurrent(0).animation.name == "jump") ? 6 : 2;
+        spineBoy.x += speed * delta;
         if (app.screen.width < spineBoy.x) {
             spineBoy.x = 0;
         }
