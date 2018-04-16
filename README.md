@@ -98,7 +98,7 @@ https://github.com/kittykatattack/learningPixi
  - [ ] Rounded rectangles
  - [ ] Lines
  - [ ] Polygons
- - [ ] Displaying text
+ - [x] Displaying text
  - [ ] Collision detection
  - [ ] The hitTestRectangle function
  - [ ] Case study: Treasure Hunter

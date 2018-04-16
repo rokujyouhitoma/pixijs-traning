@@ -40,7 +40,16 @@ function loadProgressHandler(loader, resource) {
 }
 function setup(loader, res) {
     app.ticker.add(delta => gameloop(delta));
-    // hello @yosuke_furukawa
+    // text message
+    let style = new PIXI.TextStyle({
+        fontFamily: "Arial",
+        fontSize: 36,
+        fill: "white"
+    });
+    let message = new PIXI.Text("Love @yosuke_furukawa", style);
+    app.stage.addChild(message);
+    message.position.set(app.screen.width / 2 - message.width / 2, app.screen.height / 4);
+    // sprite
     let spriteName = "@yosuke_furukawa";
     let sprite = new PIXI.Sprite(PIXI.loader.resources[spriteName].texture);
     sprite.anchor.set(0.5);
@@ -49,8 +58,7 @@ function setup(loader, res) {
     // circle for mask
     let circle = new PIXI.Graphics();
     app.stage.addChild(circle);
-    circle.x = app.screen.width / 2;
-    circle.y = app.screen.height / 2;
+    circle.position.set(app.screen.width / 2, app.screen.height / 2);
     circle.beginFill();
     circle.lineStyle(0);
     circle.drawCircle(0, 0, 100);
