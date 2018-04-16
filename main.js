@@ -77,9 +77,14 @@ function setup(loader, res) {
             sprite.setTexture(PIXI.loader.resources[spriteName].texture);
         }
         // moving rocket
-        rocket.x += 1;
+        rocket.x += 4 * delta;
         if (app.screen.width < rocket.x) {
             rocket.x = 0;
+        }
+        // moving spineBoy
+        spineBoy.x += 2 * delta;
+        if (app.screen.width < spineBoy.x) {
+            spineBoy.x = 0;
         }
     }
 }
