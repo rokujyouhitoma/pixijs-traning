@@ -39,28 +39,34 @@ function loadProgressHandler(loader, resource) {
     console.log(`progress: ${loader.progress}%, url: ${resource.url}, loading: ${resource.name}`);
 }
 function setup(loader, res) {
-    let sprite = new PIXI.Sprite(PIXI.loader.resources["@yosuke_furukawa"].texture);
+    // hello @yosuke_furukawa
+    let spriteName = "@yosuke_furukawa";
+    let sprite = new PIXI.Sprite(PIXI.loader.resources[spriteName].texture);
     sprite.anchor.set(0.5);
     sprite.position.set(app.screen.width / 2, app.screen.height / 2);
     sprite.scale.set(0.5, 0.5);
     sprite.rotation = 180 * Math.PI / 180;
     app.stage.addChild(sprite);
-    // rotate @yosuke_furukawa
+    // rotate and change @yosuke_furukawa texture
     app.ticker.add(function(delta){
         sprite.rotation += 1/50 * delta;
+        let candidateSpriteName = (Math.floor(sprite.rotation / (Math.PI / 2)) % 2 == 1) ? "@yosuke_furukawa" : "@yosuke_furukawa2";
+        if (spriteName != candidateSpriteName) {
+            spriteName = candidateSpriteName;
+            sprite.setTexture(PIXI.loader.resources[spriteName].texture);
+        }
     });
+    // rocket by used of tileset
     let texture = PIXI.utils.TextureCache["tileset"];
     let rectangle = new PIXI.Rectangle(192, 128, 64, 64);
     texture.frame = rectangle;
     let rocket = new PIXI.Sprite(texture);
-    rocket.x = 32;
-    rocket.y = 32;
-    rocket.scale.set(2, 2);
+    rocket.position.set(32, 32);
+    rocket.scale.set(1, 1);
     app.stage.addChild(rocket);
-    // spineBoy
+    // spineBoy by used of Spine data
     let spineBoy = new PIXI.spine.Spine(res.spineboy.spineData);
-    spineBoy.x = spineBoy.width;
-    spineBoy.y = app.screen.height;
+    spineBoy.position.set(spineBoy.width, app.screen.height);
     spineBoy.scale.set(1.5);
     spineBoy.stateData.setMix('walk', 'jump', 0.2);
     spineBoy.stateData.setMix('jump', 'walk', 0.4);
