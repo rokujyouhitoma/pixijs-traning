@@ -44,10 +44,22 @@ function setup(loader, res) {
     let spriteName = "@yosuke_furukawa";
     let sprite = new PIXI.Sprite(PIXI.loader.resources[spriteName].texture);
     sprite.anchor.set(0.5);
-    sprite.position.set(app.screen.width / 2, app.screen.height / 2);
     sprite.scale.set(0.5, 0.5);
     sprite.rotation = 180 * Math.PI / 180;
-    app.stage.addChild(sprite);
+    // circle for mask
+    let circle = new PIXI.Graphics();
+    app.stage.addChild(circle);
+    circle.x = app.screen.width / 2;
+    circle.y = app.screen.height / 2;
+    circle.beginFill();
+    circle.lineStyle(0);
+    circle.drawCircle(0, 0, 100);
+    circle.endFill();
+    let container = new PIXI.Container();
+    app.stage.addChild(container);
+    container.position.set(app.screen.width / 2, app.screen.height / 2);
+    container.addChild(sprite);
+    container.mask = circle;
     // rocket by used of tileset
     let texture = PIXI.utils.TextureCache["tileset"];
     let rectangle = new PIXI.Rectangle(192, 128, 64, 64);
@@ -70,8 +82,8 @@ function setup(loader, res) {
     });
     function gameloop(delta){
         // rotate and change @yosuke_furukawa texture
-        sprite.rotation += 1/50 * delta;
-        let candidateSpriteName = (Math.floor(sprite.rotation / (Math.PI / 2)) % 2 == 0) ? "@yosuke_furukawa" : "@rokujyouhitoma";
+        container.rotation += 1/50 * delta;
+        let candidateSpriteName = (Math.floor(container.rotation / (Math.PI / 2)) % 2 == 0) ? "@yosuke_furukawa" : "@rokujyouhitoma";
         if (spriteName != candidateSpriteName) {
             spriteName = candidateSpriteName;
             sprite.setTexture(PIXI.loader.resources[spriteName].texture);
