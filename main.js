@@ -39,6 +39,7 @@ function loadProgressHandler(loader, resource) {
     console.log(`progress: ${loader.progress}%, url: ${resource.url}, loading: ${resource.name}`);
 }
 function setup(loader, res) {
+    app.ticker.add(delta => gameloop(delta));
     // hello @yosuke_furukawa
     let spriteName = "@yosuke_furukawa";
     let sprite = new PIXI.Sprite(PIXI.loader.resources[spriteName].texture);
@@ -47,15 +48,6 @@ function setup(loader, res) {
     sprite.scale.set(0.5, 0.5);
     sprite.rotation = 180 * Math.PI / 180;
     app.stage.addChild(sprite);
-    // rotate and change @yosuke_furukawa texture
-    app.ticker.add(function(delta){
-        sprite.rotation += 1/50 * delta;
-        let candidateSpriteName = (Math.floor(sprite.rotation / (Math.PI / 2)) % 2 == 0) ? "@yosuke_furukawa" : "@rokujyouhitoma";
-        if (spriteName != candidateSpriteName) {
-            spriteName = candidateSpriteName;
-            sprite.setTexture(PIXI.loader.resources[spriteName].texture);
-        }
-    });
     // rocket by used of tileset
     let texture = PIXI.utils.TextureCache["tileset"];
     let rectangle = new PIXI.Rectangle(192, 128, 64, 64);
@@ -76,4 +68,18 @@ function setup(loader, res) {
         spineBoy.state.setAnimation(0, 'jump', false);
         spineBoy.state.addAnimation(0, 'walk', true, 0);
     });
+    function gameloop(delta){
+        // rotate and change @yosuke_furukawa texture
+        sprite.rotation += 1/50 * delta;
+        let candidateSpriteName = (Math.floor(sprite.rotation / (Math.PI / 2)) % 2 == 0) ? "@yosuke_furukawa" : "@rokujyouhitoma";
+        if (spriteName != candidateSpriteName) {
+            spriteName = candidateSpriteName;
+            sprite.setTexture(PIXI.loader.resources[spriteName].texture);
+        }
+        // moving rocket
+        rocket.x += 1;
+        if (app.screen.width < rocket.x) {
+            rocket.x = 0;
+        }
+    }
 }

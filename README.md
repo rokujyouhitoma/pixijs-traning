@@ -38,6 +38,10 @@ pixi.jsのキャッチアップ。
 
 ## History
 
+### 2018.4.16
+
+ - Learning Pixiを進める
+
 ### 2018.4.15
 
  - pixi-spine.jsを導入
@@ -78,7 +82,7 @@ https://github.com/kittykatattack/learningPixi
  - [ ] Using a texture atlas
  - [ ] Loading the texture atlas
  - [ ] Creating sprites from a loaded texture atlas
- - [ ] Moving Sprites
+ - [x] Moving Sprites
  - [ ] Using velocity properties
  - [ ] Game states
  - [ ] Keyboarad Movement
