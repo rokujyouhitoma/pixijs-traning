@@ -1,46 +1,57 @@
 // hey! @yosuke_furukawa!!
 "use strict";
-let type = "WebGL";
-if(!PIXI.utils.isWebGLSupported()){
-    type = "canvas";
-}
-PIXI.utils.sayHello(type);
-let app = new PIXI.Application({
-    width: 256,
-    height: 256,
-    antialias: true,
-    transparent: false,
-    resolution: 1
-});
-app.renderer.backgroundColor = 0x061639;
-app.renderer.view.style.position = "absolute";
-app.renderer.view.style.display = "block";
-app.renderer.autoResize = false;
-//app.renderer.resize(window.innerWidth, window.innerHeight)
-app.renderer.resize(1024, 1024);
-app.stage.interactive = true;
-document.body.appendChild(app.view);
-// scale to window size.
-scaleToWindow(app.renderer.view);
-window.addEventListener("resize", function(event){
+let app;
+(function initialize() {
+    let type = "WebGL";
+    if (!PIXI.utils.isWebGLSupported()) {
+        type = "canvas";
+    }
+    PIXI.utils.sayHello(type);
+    app = new PIXI.Application({
+        width: 256,
+        height: 256,
+        antialias: true,
+        transparent: false,
+        resolution: 1
+    });
+    app.renderer.backgroundColor = 0x061639;
+    app.renderer.view.style.position = "absolute";
+    app.renderer.view.style.display = "block";
+    app.renderer.autoResize = false;
+    app.renderer.resize(1024, 1024);
+    app.stage.interactive = true;
+    document.body.appendChild(app.view);
+    // scale to window size.
     scaleToWindow(app.renderer.view);
-});
-PIXI.loader
-    .add([
-        {name: "@yosuke_furukawa", url: "assets/yosuke_furukawa_icon_400x400.jpg", onComplete: onCompleteHandler},
-        {name: "@rokujyouhitoma", url: "assets/rokujyouhitoma_icon_400x400.jpg", onComplete: onCompleteHandler},
-        {name: "tileset", url: "third_party/assets/tileset.png"},
-        {name: "spineboy", url: "third_party/assets/spine/spineboy.json"}])
-    .on("progress", loadProgressHandler)
-    .load(setup);
-function onCompleteHandler() {
-}
+    window.addEventListener("resize", function(event){
+        scaleToWindow(app.renderer.view);
+    });
+    PIXI.loader
+        .add([
+            {name: "@yosuke_furukawa", url: "assets/yosuke_furukawa_icon_400x400.jpg"},
+            {name: "@rokujyouhitoma", url: "assets/rokujyouhitoma_icon_400x400.jpg"},
+            {name: "tileset", url: "third_party/assets/tileset.png"},
+            {name: "spineboy", url: "third_party/assets/spine/spineboy.json"}])
+        .on("progress", loadProgressHandler)
+        .load(setup);
+})();
 function loadProgressHandler(loader, resource) {
     console.log(`progress: ${loader.progress}%, url: ${resource.url}, loading: ${resource.name}`);
 }
+let container, sprite, rocket, spineBoy;
+let spriteName = "@yosuke_furukawa";
 function setup(loader, res) {
     app.ticker.add(delta => gameloop(delta));
     // text message
+    setupMessage();
+    // sprite
+    setupCircleIcon();
+    // rocket by used of tileset
+    setupRocket();
+    // spineBoy by used of Spine data
+    setupSpineBoy(res);
+}
+function setupMessage() {
     let style = new PIXI.TextStyle({
         fontFamily: "Arial",
         fontSize: 36,
@@ -49,9 +60,9 @@ function setup(loader, res) {
     let message = new PIXI.Text("Love @yosuke_furukawa", style);
     app.stage.addChild(message);
     message.position.set(app.screen.width / 2 - message.width / 2, app.screen.height / 4);
-    // sprite
-    let spriteName = "@yosuke_furukawa";
-    let sprite = new PIXI.Sprite(PIXI.loader.resources[spriteName].texture);
+}
+function setupCircleIcon() {
+    sprite = new PIXI.Sprite(PIXI.loader.resources[spriteName].texture);
     sprite.anchor.set(0.5);
     sprite.scale.set(0.5, 0.5);
     sprite.rotation = 180 * Math.PI / 180;
@@ -63,21 +74,23 @@ function setup(loader, res) {
     circle.lineStyle(0);
     circle.drawCircle(0, 0, 100);
     circle.endFill();
-    let container = new PIXI.Container();
+    container = new PIXI.Container();
     app.stage.addChild(container);
     container.position.set(app.screen.width / 2, app.screen.height / 2);
     container.addChild(sprite);
     container.mask = circle;
-    // rocket by used of tileset
+}
+function setupRocket() {
     let texture = PIXI.utils.TextureCache["tileset"];
     let rectangle = new PIXI.Rectangle(192, 128, 64, 64);
     texture.frame = rectangle;
-    let rocket = new PIXI.Sprite(texture);
+    rocket = new PIXI.Sprite(texture);
     rocket.position.set(32, 32);
     rocket.scale.set(1, 1);
     app.stage.addChild(rocket);
-    // spineBoy by used of Spine data
-    let spineBoy = new PIXI.spine.Spine(res.spineboy.spineData);
+}
+function setupSpineBoy(res) {
+    spineBoy = new PIXI.spine.Spine(res.spineboy.spineData);
     spineBoy.position.set(spineBoy.width, app.screen.height);
     spineBoy.scale.set(1.5);
     spineBoy.stateData.setMix('walk', 'jump', 0.2);
@@ -88,24 +101,24 @@ function setup(loader, res) {
         spineBoy.state.setAnimation(0, 'jump', false);
         spineBoy.state.addAnimation(0, 'walk', true, 0);
     });
-    function gameloop(delta){
-        // rotate and change @yosuke_furukawa texture
-        container.rotation += 1/50 * delta;
-        let candidateSpriteName = (Math.floor(container.rotation / (Math.PI / 2)) % 2 == 0) ? "@yosuke_furukawa" : "@rokujyouhitoma";
-        if (spriteName != candidateSpriteName) {
-            spriteName = candidateSpriteName;
-            sprite.setTexture(PIXI.loader.resources[spriteName].texture);
-        }
-        // moving rocket
-        rocket.x += 4 * delta;
-        if (app.screen.width < rocket.x) {
-            rocket.x = 0;
-        }
-        // moving spineBoy
-        let speed = (spineBoy.state.getCurrent(0).animation.name == "jump") ? 6 : 2;
-        spineBoy.x += speed * delta;
-        if (app.screen.width < spineBoy.x) {
-            spineBoy.x = 0;
-        }
+}
+function gameloop(delta){
+    // rotate and change @yosuke_furukawa texture
+    container.rotation += 1/50 * delta;
+    let candidateSpriteName = (Math.floor(container.rotation / (Math.PI / 2)) % 2 == 0) ? "@yosuke_furukawa" : "@rokujyouhitoma";
+    if (spriteName != candidateSpriteName) {
+        spriteName = candidateSpriteName;
+        sprite.setTexture(PIXI.loader.resources[spriteName].texture);
+    }
+    // moving rocket
+    rocket.x += 4 * delta;
+    if (app.screen.width < rocket.x) {
+        rocket.x = 0;
+    }
+    // moving spineBoy
+    let speed = (spineBoy.state.getCurrent(0).animation.name == "jump") ? 6 : 2;
+    spineBoy.x += speed * delta;
+    if (app.screen.width < spineBoy.x) {
+        spineBoy.x = 0;
     }
 }
