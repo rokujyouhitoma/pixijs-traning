@@ -31,9 +31,11 @@ pixi.jsのキャッチアップ。
 ### TODO
 
  - [ ] APIになれる
- - [ ] 内部コードの流し見
- - [ ] 内部コードのインタフェース読み
+ - [x] 内部コードのインタフェース読み
+ - [x] 内部コードの流し見
  - [ ] 内部コードの全読み
+ - [ ] APIドキュメントの流し見
+ - [ ] APIドキュメントの全読み
  - [ ] pixi-spine.jsを追う。Spineを触る
 
 ## History
@@ -41,6 +43,8 @@ pixi.jsのキャッチアップ。
 ### 2018.4.17
 
  - ParticleContainerを使う
+ - 内部コードのインタフェース読み、流し見
+   - @mitsuhiko のコード（しかもシェーダ。彼シェーダ書くの...）が取り込まれてて衝撃を受ける
 
 ### 2018.4.16
 
@@ -92,32 +96,11 @@ https://github.com/kittykatattack/learningPixi
  - [ ] Using velocity properties
  - [ ] Game states
  - [ ] Keyboarad Movement
- - [ ] Grouping Sprites
- - [ ] Local and global positions
+ - [x] Grouping Sprites
  - [x] Using a ParticleContainer to group sprites
  - [ ] Pixi's Graphic Primitives
- - [ ] Rectangle
- - [ ] Circles
- - [ ] Ellipses
- - [ ] Rounded rectangles
- - [ ] Lines
- - [ ] Polygons
  - [x] Displaying text
  - [ ] Collision detection
- - [ ] The hitTestRectangle function
  - [ ] Case study: Treasure Hunter
- - [ ] Initialize the game in the setup function
- - [ ] Creating the game scenes
- - [ ] Making the dungeon, door, explorer and treasure
- - [ ] Making the blob monsters
- - [ ] Making health bar
- - [ ] Making message text
- - [ ] Playing the game
- - [ ] Moving the explorer
- - [ ] Containing movement
- - [ ] Moving the monsters
- - [ ] Checking for collisions
- - [ ] Reaching the exit door and ending game
- - [ ] More about sprites
+ - [x] More about sprites
  - [ ] Taking it further
- - [ ] Supporting this project
