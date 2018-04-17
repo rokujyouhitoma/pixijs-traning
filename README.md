@@ -38,6 +38,10 @@ pixi.jsのキャッチアップ。
 
 ## History
 
+### 2018.4.17
+
+ - ParticleContainerを使う
+
 ### 2018.4.16
 
  - Learning Pixiを進める
@@ -90,7 +94,7 @@ https://github.com/kittykatattack/learningPixi
  - [ ] Keyboarad Movement
  - [ ] Grouping Sprites
  - [ ] Local and global positions
- - [ ] Using a ParticleContainer to group sprites
+ - [x] Using a ParticleContainer to group sprites
  - [ ] Pixi's Graphic Primitives
  - [ ] Rectangle
  - [ ] Circles

@@ -38,10 +38,14 @@ let app;
 function loadProgressHandler(loader, resource) {
     console.log(`progress: ${loader.progress}%, url: ${resource.url}, loading: ${resource.name}`);
 }
-let container, sprite, rocket, spineBoy;
-let spriteName = "@yosuke_furukawa";
+let container, sprite, rocket, spineBoy, particles;
+let currentSpriteName;
+const SPRITE_NAME = "@yosuke_furukawa";
+const PARTICLE_MAX = 400;
 function setup(loader, res) {
     app.ticker.add(delta => gameloop(delta));
+    // particle by used of @yosuke_furukawa
+    setupParticle();
     // text message
     setupMessage();
     // sprite
@@ -50,6 +54,7 @@ function setup(loader, res) {
     setupRocket();
     // spineBoy by used of Spine data
     setupSpineBoy(res);
+    setupParticle();
 }
 function setupMessage() {
     let style = new PIXI.TextStyle({
@@ -62,7 +67,7 @@ function setupMessage() {
     message.position.set(app.screen.width / 2 - message.width / 2, app.screen.height / 4);
 }
 function setupCircleIcon() {
-    sprite = new PIXI.Sprite(PIXI.loader.resources[spriteName].texture);
+    sprite = new PIXI.Sprite(PIXI.loader.resources[SPRITE_NAME].texture);
     sprite.anchor.set(0.5);
     sprite.scale.set(0.5, 0.5);
     sprite.rotation = 180 * Math.PI / 180;
@@ -106,9 +111,9 @@ function gameloop(delta){
     // rotate and change @yosuke_furukawa texture
     container.rotation += 1/50 * delta;
     let candidateSpriteName = (Math.floor(container.rotation / (Math.PI / 2)) % 2 == 0) ? "@yosuke_furukawa" : "@rokujyouhitoma";
-    if (spriteName != candidateSpriteName) {
-        spriteName = candidateSpriteName;
-        sprite.setTexture(PIXI.loader.resources[spriteName].texture);
+    if (currentSpriteName != candidateSpriteName) {
+        currentSpriteName = candidateSpriteName;
+        sprite.setTexture(PIXI.loader.resources[candidateSpriteName].texture);
     }
     // moving rocket
     rocket.x += 4 * delta;
@@ -120,5 +125,47 @@ function gameloop(delta){
     spineBoy.x += speed * delta;
     if (app.screen.width < spineBoy.x) {
         spineBoy.x = 0;
+    }
+}
+function setupParticle() {
+    let container = new PIXI.ParticleContainer(PARTICLE_MAX, {alpha: true});
+    app.stage.addChild(container);
+    container.position.set(app.screen.width / 2, app.screen.height / 2);
+    container.blendMode = PIXI.BLEND_MODES.ADD;
+    var texture = PIXI.loader.resources[SPRITE_NAME].texture;
+    particles = [];
+    for (var i = 0; i < PARTICLE_MAX; i++) {
+        var particle = new PIXI.Sprite(texture);
+        container.addChild(particle);
+        particle.anchor.set(0.5);
+        var scale = 0.01 + Math.random() * 0.1;
+        particle.scale.x = scale;
+        particle.scale.y = scale;
+        particle.position.x = (Math.random() - 0.5) * app.screen.width;
+        particle.position.y = (Math.random() - 0.5) * app.screen.height;
+        particle.life = 0.2 + Math.random() * 0.8;
+        particle.alpha = 0.4;
+        particles[i] = particle;
+    }
+    updateParticle();
+}
+function updateParticle() {
+    emitParticle();
+    requestAnimationFrame(updateParticle);
+}
+function emitParticle() {
+    if (!particles) {
+        return;
+    }
+    for (var i = 0; i < PARTICLE_MAX; i++) {
+        let particle = particles[i];
+        if (0 < particle.life) {
+            particle.life -= 0.01;
+            particle.alpha = 0.4 * particle.life;
+        } else {
+            particle.position.x = (Math.random() - 0.5) * app.screen.width;
+            particle.position.y = (Math.random() - 0.5) * app.screen.height;
+            particle.life = 0.2 + Math.random() * 0.8;
+        }
     }
 }
