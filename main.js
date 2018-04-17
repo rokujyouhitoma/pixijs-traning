@@ -54,7 +54,6 @@ function setup(loader, res) {
     setupRocket();
     // spineBoy by used of Spine data
     setupSpineBoy(res);
-    setupParticle();
 }
 function setupMessage() {
     let style = new PIXI.TextStyle({
