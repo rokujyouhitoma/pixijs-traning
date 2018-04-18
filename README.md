@@ -40,6 +40,11 @@ pixi.jsのキャッチアップ。
 
 ## History
 
+### 2018.4.18
+
+ - Learning Pixiを進める
+ - (SpriteStudioのランタイムをPixi.jsで実現しようとして挫折...)
+
 ### 2018.4.17
 
  - ParticleContainerを使う
@@ -89,9 +94,9 @@ https://github.com/kittykatattack/learningPixi
  - [x] Size and scale
  - [x] Rotation
  - [x] Make a sprite from a tileset sub-image
- - [ ] Using a texture atlas
- - [ ] Loading the texture atlas
- - [ ] Creating sprites from a loaded texture atlas
+ - [x] Using a texture atlas
+ - [x] Loading the texture atlas
+ - [x] Creating sprites from a loaded texture atlas
  - [x] Moving Sprites
  - [ ] Using velocity properties
  - [ ] Game states
