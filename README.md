@@ -40,6 +40,10 @@ pixi.jsのキャッチアップ。
 
 ## History
 
+### 2018.4.19
+
+ - Learning Pixiを進める
+
 ### 2018.4.18
 
  - Learning Pixiを進める
@@ -98,14 +102,14 @@ https://github.com/kittykatattack/learningPixi
  - [x] Loading the texture atlas
  - [x] Creating sprites from a loaded texture atlas
  - [x] Moving Sprites
- - [ ] Using velocity properties
- - [ ] Game states
- - [ ] Keyboarad Movement
+ - [x] Using velocity properties
+ - [x] Game states
+ - [x] Keyboarad Movement
  - [x] Grouping Sprites
  - [x] Using a ParticleContainer to group sprites
- - [ ] Pixi's Graphic Primitives
+ - [x] Pixi's Graphic Primitives
  - [x] Displaying text
- - [ ] Collision detection
- - [ ] Case study: Treasure Hunter
+ - [x] Collision detection
+ - [x] Case study: Treasure Hunter
  - [x] More about sprites
  - [ ] Taking it further
