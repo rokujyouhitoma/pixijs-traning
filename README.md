@@ -113,4 +113,3 @@ https://github.com/kittykatattack/learningPixi
  - [x] Collision detection
  - [x] Case study: Treasure Hunter
  - [x] More about sprites
- - [ ] Taking it further
