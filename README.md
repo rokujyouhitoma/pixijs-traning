@@ -78,6 +78,23 @@ pixi.jsのキャッチアップ。
  - hello! @yosuke_furukawa sprite!!
  - scaleToWindowの導入。ウィンドウ領域に合わせる
 
+## Learn Pixi.js
+
+英語だけど書籍出てたのでこなす。
+=> Learning Pixiが増量された書籍だった...
+
+ - [https://www.amazon.co.jp/dp/B01HXEJ4PC](Learn Pixi.js)
+   - https://github.com/apress/learn-pixi.js
+
+ - [x] Chapter 1: Making Sprites
+ - [ ] Chapter 2: Moving Sprites
+ - [ ] Chapter 3: Shapes, Text, and Groups
+ - [ ] Chapter 4: Making Games
+ - [ ] Chapter 5: Animating Sprites
+ - [ ] Chapter 6: Visual Effects and Transitions
+ - [ ] Chapter 7: Mouse and Touch Events
+ - [ ] APPENDIX Pixie Perilousness!—Complete Code
+
 ## Learning Pixi
 
 https://github.com/kittykatattack/learningPixi
