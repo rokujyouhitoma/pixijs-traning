@@ -35,11 +35,19 @@ pixi.jsのキャッチアップ。
  - [x] 内部コードのインタフェース読み
  - [x] 内部コードの流し見
  - [ ] 内部コードの全読み
- - [ ] APIドキュメントの流し見
+ - [x] APIドキュメントの流し見
  - [ ] APIドキュメントの全読み
  - [ ] pixi-spine.jsを追う。Spineを触る
 
 ## History
+
+### 2018.4.22
+
+ - Learn Pixi.jsを進める
+
+### 2018.4.20
+
+ - Learn Pixi.jsを始める
 
 ### 2018.4.19
 
@@ -88,7 +96,7 @@ pixi.jsのキャッチアップ。
 
  - [x] Chapter 1: Making Sprites
  - [ ] Chapter 2: Moving Sprites
- - [ ] Chapter 3: Shapes, Text, and Groups
+ - [x] Chapter 3: Shapes, Text, and Groups
  - [ ] Chapter 4: Making Games
  - [ ] Chapter 5: Animating Sprites
  - [ ] Chapter 6: Visual Effects and Transitions
