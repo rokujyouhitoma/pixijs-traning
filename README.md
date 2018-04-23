@@ -44,15 +44,18 @@ pixi.jsのキャッチアップ。
 ### 2018.4.23
 
  - Learn Pixi.jsを進める
+   - Chapter 4
  - velocity.htmlを追加
 
 ### 2018.4.22
 
  - Learn Pixi.jsを進める
+   - Chapter 2
 
 ### 2018.4.20
 
  - Learn Pixi.jsを始める
+   - Chapter 1, 3
 
 ### 2018.4.19
 
@@ -102,7 +105,7 @@ pixi.jsのキャッチアップ。
  - [x] Chapter 1: Making Sprites
  - [x] Chapter 2: Moving Sprites
  - [x] Chapter 3: Shapes, Text, and Groups
- - [ ] Chapter 4: Making Games
+ - [x] Chapter 4: Making Games
  - [ ] Chapter 5: Animating Sprites
  - [ ] Chapter 6: Visual Effects and Transitions
  - [ ] Chapter 7: Mouse and Touch Events
