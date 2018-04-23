@@ -104,6 +104,8 @@ function play() {
     sprite.vy += sprite.accelerationY;
     sprite.vx *= sprite.frictionX;
     sprite.vy *= sprite.frictionY;
+    // gravity
+    //sprite.vy += 0.45;
     // move
     sprite.x += sprite.vx;
     sprite.y += sprite.vy;
@@ -116,10 +118,10 @@ function play() {
     // check collision
     if (collision) {
         if (collision.has("left") || collision.has("right")) {
-            sprite.vx = -sprite.vx;
+            sprite.vx = -sprite.vx / 2;
         }
         if (collision.has("top") || collision.has("bottom")) {
-            sprite.vy = -sprite.vy;
+            sprite.vy = -sprite.vy / 2;
         }
     }
 }
