@@ -46,9 +46,8 @@ function setup(loader, res) {
     sprite.accelerationY = 0;
     sprite.frictionX = 1;
     sprite.frictionY = 1;
-    sprite.speed = 0.2;
+    sprite.speed = 0.1;
     sprite.drag = 0.98;
-    //sprite.anchor.set(0.5);
     sprite.scale.set(0.5, 0.5);
     app.stage.addChild(sprite);
     let left = keyboard(37),
