@@ -11,10 +11,11 @@
 
  - assets/tileset.png(https://github.com/kittykatattack/learningPixi)
    - revision: https://github.com/kittykatattack/learningPixi/commit/d85b971fb4ea52e41ab8072904392c52af398a61
+ - assets/adventuress.png(https://raw.githubusercontent.com/kittykatattack/learnPixiJS/master/chapter05/images/adventuress.png)
+   - revision: https://github.com/kittykatattack/learnPixiJS/commit/2f91d4bfeba7c6d5ab8057b2585a2cc2b78bcef3
 
 ## For spine
 
  - assets/spine/spineboy.json(http://pixijs.io/examples/required/assets/spine/spineboy.json)
  - assets/spine/spineboy.atlas(http://pixijs.io/examples/required/assets/spine/spineboy.atlas)
  - assets/spine/spineboy.png(http://pixijs.io/examples/required/assets/spine/spineboy.png)
- 
