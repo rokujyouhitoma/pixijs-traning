@@ -37,7 +37,15 @@ pixi.jsのキャッチアップ。
  - [ ] 内部コードの全読み
  - [x] APIドキュメントの流し見
  - [ ] APIドキュメントの全読み
- - [ ] pixi-spine.jsを追う。Spineを触る
+ - [ ] 周辺ライブラリを追う
+   - [x] https://github.com/pixijs/pixi-spine
+   - [ ] https://github.com/kittykatattack/bump
+   - [ ] https://github.com/kittykatattack/tink
+   - [ ] https://github.com/kittykatattack/charm
+   - [ ] https://github.com/kittykatattack/dust
+   - [ ] https://github.com/kittykatattack/spriteUtilities
+   - [ ] https://github.com/kittykatattack/sound.js
+   - [ ] https://github.com/kittykatattack/smoothie
 
 ## History
 
